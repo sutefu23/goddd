@@ -6,7 +6,7 @@ import (
 )
 
 type LastName struct {
-	value string
+	Value string
 }
 
 func NewLastName(value string) (*LastName, error) {
@@ -14,5 +14,5 @@ func NewLastName(value string) (*LastName, error) {
 		return nil, errors.New("lastName must be under 10")
 
 	}
-	return &LastName{value: value}, nil
+	return &LastName{Value: value}, nil
 }

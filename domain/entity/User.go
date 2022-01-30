@@ -3,8 +3,17 @@ package entity
 import "goddd/domain/value"
 
 type User struct {
-	firstName value.FirstName
-	lastName  value.LastName
+	FirstName value.FirstName
+	LastName  value.LastName
+}
+
+func (u *User) ChangeFirstName(firstName string) (*User, error) {
+	newUser, err := NewUser(firstName, u.LastName.Value)
+	if err != nil {
+		return nil, err
+	}
+
+	return newUser, nil
 }
 
 func NewUser(firstname string, lastName string) (*User, error) {
@@ -18,7 +27,7 @@ func NewUser(firstname string, lastName string) (*User, error) {
 	}
 
 	return &User{
-		firstName: *fName,
-		lastName:  *lName,
+		FirstName: *fName,
+		LastName:  *lName,
 	}, nil
 }
